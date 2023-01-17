@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchCountries } from '../services/countries.js';
+import { fetchCountries, fetchContinents } from '../services/countries.js';
 
 export function useCountries() {
   const [countries, setCountries] = useState([]);
@@ -12,4 +12,17 @@ export function useCountries() {
     fetchData();
   }, []);
   return countries;
+}
+
+export function useContinents() {
+  const [continents, setContinents] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = await fetchContinents();
+      setContinents(resp);
+    };
+    fetchData();
+  }, []);
+  return continents;
 }
