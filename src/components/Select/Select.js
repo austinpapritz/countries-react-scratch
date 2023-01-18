@@ -9,7 +9,6 @@ export default function Select({ setCountries }) {
   const handleOption = (e) => {
     const continent = e.target.value;
 
-    if (continent === 'All') setCountries(countries);
     const filteredCountries = countries.filter((country) => country.continent === continent);
     setCountries(filteredCountries);
   };
