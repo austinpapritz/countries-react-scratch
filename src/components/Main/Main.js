@@ -7,8 +7,6 @@ import Select from '../Select/Select.js';
 import { useCountries } from '../../hooks/useCountries.js';
 
 export default function Main() {
-  let i = 0;
-
   const { continent, setContinent, filterContinents } = useCountries();
 
   return (
