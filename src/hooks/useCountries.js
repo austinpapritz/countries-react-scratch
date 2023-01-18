@@ -12,9 +12,11 @@ export function useCountries() {
     };
     fetchData();
   }, []);
+  //move all this to Main.js and figure it out
   const filterContinents = () => {
     if (continent === 'All') return countries;
-    return countries.filter((country) => country.continent);
+    const filteredCountries = countries.filter((country) => country.continent);
+    setCountries(filteredCountries);
   };
-  return { filterContinents, continent, setContinent };
+  return { countries, filterContinents, continent, setContinent };
 }

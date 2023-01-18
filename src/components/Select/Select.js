@@ -2,14 +2,12 @@ import React from 'react';
 import './Select.css';
 
 export default function Select({ continent, setContinent }) {
+  //handle filter to setCountry so it can get mapped in Main
+  const handleOption = (e) => {
+    setContinent(e.target.value);
+  };
   return (
-    <select
-      className="continent-select"
-      value={continent}
-      onChange={(e) => {
-        setContinent(e.target.value);
-      }}
-    >
+    <select className="continent-select" value={continent} onChange={handleOption}>
       <option value="All">All</option>
       <option value="Africa">Africa</option>
       <option value="Antarctica">Antarctica</option>

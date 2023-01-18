@@ -7,12 +7,13 @@ import Select from '../Select/Select.js';
 import { useCountries } from '../../hooks/useCountries.js';
 
 export default function Main() {
-  const { continent, setContinent, filterContinents } = useCountries();
+  //make a setCountry prop in Select using useState
+  const { countries, continent, setContinent, filterContinents } = useCountries();
 
   return (
     <>
       <Select continent={continent} setContinent={setContinent} />
-      {filterContinents().map((country) => (
+      {countries.map((country) => (
         <CountryCard key={country.id} {...country} />
       ))}
     </>
