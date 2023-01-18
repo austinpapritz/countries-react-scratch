@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Select.css';
 
 import { useCountries } from '../../hooks/useCountries.js';
 
 export default function Select({ setCountries }) {
   const countries = useCountries();
+  // const [continent, setContinent] = useState('');
+
+  //for some reason the following breaks everything, cannot figure out how to start with all countries
+  // if (continent === 'All') setCountries(countries);
 
   const handleOption = (e) => {
-    const continent = e.target.value;
-
+    // setContinent(e.target.value);
+    let continent = e.target.value;
     const filteredCountries = countries.filter((country) => country.continent === continent);
     setCountries(filteredCountries);
   };
