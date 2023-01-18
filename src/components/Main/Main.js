@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Main.css';
 
 import CountryCard from '../CountryCard/CountryCard.js';
 import Select from '../Select/Select.js';
 
-import { useCountries } from '../../hooks/useCountries.js';
-
 export default function Main() {
-  //make a setCountry prop in Select using useState
-  const { countries, continent, setContinent, filterContinents } = useCountries();
-
+  const [countries, setCountries] = useState([]);
   return (
     <>
-      <Select continent={continent} setContinent={setContinent} />
+      <Select setCountries={setCountries} />
       {countries.map((country) => (
         <CountryCard key={country.id} {...country} />
       ))}
