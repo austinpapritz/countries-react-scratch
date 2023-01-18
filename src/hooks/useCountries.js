@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { fetchCountries, fetchContinents } from '../services/countries.js';
+import { fetchCountries } from '../services/countries.js';
 
 export function useCountries() {
   const [countries, setCountries] = useState([]);
+  const [continent, setContinent] = useState('All');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,18 +12,9 @@ export function useCountries() {
     };
     fetchData();
   }, []);
-  return countries;
-}
-
-export function useContinents() {
-  const [continents, setContinents] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const resp = await fetchContinents();
-      setContinents(resp);
-    };
-    fetchData();
-  }, []);
-  return continents;
+  const filterContinents = () => {
+    if (continent === 'All') return countries;
+    return countries.filter((country) => country.continent);
+  };
+  return { filterContinents, continent, setContinent };
 }
