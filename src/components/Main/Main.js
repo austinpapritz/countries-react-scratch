@@ -5,15 +5,35 @@ import './Main.css';
 
 import CountryCard from '../CountryCard/CountryCard.js';
 import Select from '../Select/Select.js';
+import Search from '../Search/Search.js';
 
 export default function Main() {
-  const { continent, setContinent, filterCountries, error } = useCountries('');
+  const {
+    continent,
+    setContinent,
+    filterCountries,
+    error,
+    search,
+    setSearch,
+    searchCountries,
+    filteredCountries,
+    setFilteredCountries,
+    countries,
+  } = useCountries();
 
   return (
     <main>
-      <Select continent={continent} setContinent={setContinent} />
+      <label>Filter by Continent: </label>
+      <Select
+        continent={continent}
+        setContinent={setContinent}
+        setFilteredCountries={setFilteredCountries}
+        countries={countries}
+      />
+      <label>Search: </label>
+      <Search search={search} setSearch={setSearch} />
       <div className="card-container">
-        {filterCountries().map((country) => (
+        {filteredCountries.map((country) => (
           <CountryCard key={country.id} {...country} />
         ))}
       </div>

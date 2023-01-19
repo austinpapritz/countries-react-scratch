@@ -4,6 +4,8 @@ import { fetchCountries } from '../services/countries.js';
 export function useCountries() {
   const [countries, setCountries] = useState([]);
   const [continent, setContinent] = useState('All');
+  const [search, setSearch] = useState('');
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -11,6 +13,7 @@ export function useCountries() {
       try {
         const resp = await fetchCountries();
         setCountries(resp);
+        setFilteredCountries(resp);
       } catch (e) {
         setError('Sorry something went wrong');
       }
@@ -18,9 +21,20 @@ export function useCountries() {
     fetchData();
   }, []);
 
-  const filterCountries = () => {
-    if (continent === 'All') return countries;
-    return countries.filter((country) => country.continent === continent);
+  const searchCountries = (search) => {
+    const searchedCountries = countries.includes(search);
+    return setSearch(searchedCountries);
   };
-  return { filterCountries, continent, setContinent, error };
+
+  return {
+    continent,
+    setContinent,
+    error,
+    search,
+    setSearch,
+    searchCountries,
+    filteredCountries,
+    countries,
+    setFilteredCountries,
+  };
 }
