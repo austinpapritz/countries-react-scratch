@@ -2,5 +2,5 @@ import React from 'react';
 import './Header.css';
 
 export default function Header() {
-  return <div>Filter by Continent</div>;
+  return <header>Flags of the World</header>;
 }

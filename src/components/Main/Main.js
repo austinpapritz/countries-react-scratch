@@ -7,7 +7,7 @@ import CountryCard from '../CountryCard/CountryCard.js';
 import Select from '../Select/Select.js';
 
 export default function Main() {
-  const { continent, setContinent, filterCountries, error } = useCountries('');
+  const { continent, setContinent, filterCountries, error } = useCountries();
 
   return (
     <main>
