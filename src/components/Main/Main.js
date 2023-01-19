@@ -12,9 +12,11 @@ export default function Main() {
   return (
     <main>
       <Select continent={continent} setContinent={setContinent} />
-      {filterCountries().map((country) => (
-        <CountryCard key={country.id} {...country} />
-      ))}
+      <div className="card-container">
+        {filterCountries().map((country) => (
+          <CountryCard key={country.id} {...country} />
+        ))}
+      </div>
       {error}
     </main>
   );
